@@ -13,6 +13,9 @@ public class BreakCipher {
 
     private static String consoleInput;
 
+    /**
+     * Main run method.
+     */
     public static void run() {
 
         System.out.println(ANSI_GREEN + "Vítejte!" + ANSI_RESET);
@@ -25,6 +28,9 @@ public class BreakCipher {
 
     }
 
+    /**
+     * Calls brute force method on current input.
+     */
     private static void bruteForceCall() {
 
         try {

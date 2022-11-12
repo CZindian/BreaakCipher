@@ -18,6 +18,12 @@ public class BruteForce {
     private static String possibleCombinations;
     //endregion
 
+    /**
+     * Main brute force method – manager.
+     * @param consoleInput encrypted message
+     * @throws UnsupportedAlphabetCharacterException is thrown when consoleInput contains letter,
+     * which is not defined in alphabet
+     */
     public static void run(String consoleInput) throws UnsupportedAlphabetCharacterException {
 
         initAlphabet();
@@ -34,6 +40,12 @@ public class BruteForce {
 
     }
 
+    /**
+     * Searches all combinations of possible key from alphabet.
+     * @param consoleInput encrypted message
+     * @throws UnsupportedAlphabetCharacterException is thrown when consoleInput contains letter,
+     * which is not defined in alphabet
+     */
     private static void searchAllCombinations(String consoleInput)
             throws UnsupportedAlphabetCharacterException {
 
@@ -47,6 +59,9 @@ public class BruteForce {
 
     }
 
+    /**
+     * Searches all valid combinations of key and decrypted message.
+     */
     private static void searchAllValidCombinations() {
 
         StringBuilder sb = new StringBuilder();
@@ -61,6 +76,13 @@ public class BruteForce {
 
     }
 
+    /**
+     * Appends valid key and decrypted message.
+     * Decrypted message is valid against dictionary.
+     * @param sb StringBuilder of all key : sentence combinations
+     * @param key possible valid key for encryption
+     * @param sentence valid sentence
+     */
     private static void appendTo(StringBuilder sb, String key, String sentence) {
         if (isValid(sentence)) {
             sb.append("klíč '").append(key).append("' : ").
@@ -98,6 +120,9 @@ public class BruteForce {
         return possibleCombinations;
     }
 
+    /**
+     * Initialize alphabet.
+     */
     //region Util methods
     private static void initAlphabet() {
         if (alphabet == null) {
@@ -105,6 +130,9 @@ public class BruteForce {
         }
     }
 
+    /**
+     * Initialize dictionary – Set of czech words.
+     */
     private static void initCzechDictionary() {
         if (czechDictionary == null) {
             czechDictionary = StorageManager.loadDictionary();

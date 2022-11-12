@@ -6,7 +6,7 @@ import java.util.*;
 
 public class StorageManager {
 
-    private static final String FILE_NAME = "czech_words.txt";
+    private static final String FILE_NAME = "czech_words_dictionary.txt";
 
     public static Set<String> loadDictionary() {
 
@@ -23,6 +23,11 @@ public class StorageManager {
 
     }
 
+    /**
+     * Fills set by dictionary words
+     * @param words Set for dictionary words
+     * @param scan input reader
+     */
     private static void fill(Set<String> words, Scanner scan) {
 
         while (scan.hasNext()) {

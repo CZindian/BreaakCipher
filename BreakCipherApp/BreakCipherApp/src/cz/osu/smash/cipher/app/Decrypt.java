@@ -8,6 +8,13 @@ import static cz.osu.smash.cipher.app.utils.Utils.getLetterIdx;
 
 public class Decrypt {
 
+    /**
+     * @param possibleKey simple character from the alphabet
+     * @param input encrypted message
+     * @return decrypted message
+     * @throws UnsupportedAlphabetCharacterException is thrown when consoleInput contains letter,
+     * which is not defined in alphabet
+     */
     public static String getDecryptedSentence(String possibleKey, String input)
             throws UnsupportedAlphabetCharacterException {
 
@@ -28,6 +35,10 @@ public class Decrypt {
 
     }
 
+    /**
+     * @param charValue current character int value
+     * @return valid character number, that is in range of alphabet
+     */
     private static int getCharValueIfMoreThanMaximal(int charValue) {
 
         if (charValue >= MAX_INT_CHAR_VALUE) {
@@ -38,6 +49,10 @@ public class Decrypt {
 
     }
 
+    /**
+     * @param charValue current character int value
+     * @return valid character number, that is in range of alphabet
+     */
     private static int getCharValueIfLessThanMinimal(int charValue) {
 
         if (charValue < 0) {
