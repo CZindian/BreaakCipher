@@ -5,21 +5,20 @@ import cz.osu.smash.cipher.app.exceptions.UnsupportedAlphabetCharacterException;
 
 import java.util.Scanner;
 
+import static cz.osu.smash.cipher.app.utils.TextColors.*;
 import static cz.osu.smash.cipher.app.utils.Utils.checkValidity;
 import static cz.osu.smash.cipher.app.utils.Utils.getConsoleInput;
 
 public class BreakCipher {
 
-    //region Attributes
     private static String consoleInput;
-    private static String possibleKeys;
-    //endregion
 
     public static void run() {
 
-        System.out.println("Vítejte!");
-        System.out.println("Tento program vám pomůže zjistit šifrovací klíče pro šifru typu 'autoklíč'.");
-        System.out.println("Vložte zašifrovanou zprávu:");
+        System.out.println(ANSI_GREEN + "Vítejte!" + ANSI_RESET);
+        System.out.println(ANSI_GREEN + "Tento program vám pomůže zjistit šifrovací klíče pro šifru typu 'autoklíč'." + ANSI_RESET);
+        System.out.println(ANSI_GREEN + "Vložte zašifrovanou zprávu:" + ANSI_RESET);
+
         listenConsoleInput();
         bruteForceCall();
         listenConsoleInputExit();
@@ -31,11 +30,12 @@ public class BreakCipher {
         try {
             BruteForce.run(consoleInput);
             System.out.println(
-                    "Klíče, které mohly být zvoleny pro danou šifru:\n" +
-                            BruteForce.getPossibleCombinations()
+                    ANSI_YELLOW + "Klíče, které mohly být zvoleny pro danou šifru:\n" +
+                            BruteForce.getPossibleCombinations() + ANSI_RESET
             );
         } catch (UnsupportedAlphabetCharacterException e) {
-            System.out.println(e.getMessage());
+            System.out.println(ANSI_RED + e.getMessage() + ANSI_RESET);
+            System.out.println(ANSI_GREEN + "Vložte zašifrovanou zprávu z abecedy:" + ANSI_RESET);
             bruteForceCall();
         }
 
@@ -50,8 +50,8 @@ public class BreakCipher {
             checkValidity(consoleInput);
 
         } catch (IllegalConsoleInputException e) {
-            System.out.println(e.getMessage());
-            System.out.println("Vložte zašifrovanou zprávu:");
+            System.out.println(ANSI_RED + e.getMessage() + ANSI_RESET);
+            System.out.println(ANSI_GREEN + "Vložte zašifrovanou zprávu z abecedy:" + ANSI_RESET);
             listenConsoleInput();
 
         }
@@ -60,7 +60,7 @@ public class BreakCipher {
 
     private static void listenConsoleInputExit() {
 
-        System.out.println("Chcete program opustit? (a/n)");
+        System.out.println(ANSI_RED + "Chcete program opustit? (a/n)" + ANSI_RESET);
         consoleInput = getConsoleInput(
                 new Scanner(System.in)
         );
