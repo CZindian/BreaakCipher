@@ -1,7 +1,8 @@
 package cz.osu.smash.cipher.app;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import cz.osu.smash.cipher.Main;
+
+import java.io.*;
 import java.util.*;
 
 public class StorageManager {
@@ -10,23 +11,32 @@ public class StorageManager {
 
     public static Set<String> loadDictionary() {
 
+        BufferedReader reader = getBufferedReader();
         Set<String> words = new HashSet<>();
-        File file = new File(FILE_NAME);
 
-        try (Scanner scan = new Scanner(file)) {
+        try (Scanner scan = new Scanner(reader)) {
             fill(words, scan);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         }
 
         return words;
 
     }
 
+    private static BufferedReader getBufferedReader() {
+
+        InputStream inputStream = Main.class.getResourceAsStream("/" + FILE_NAME);
+        assert inputStream != null;
+        InputStreamReader iss = new InputStreamReader(inputStream);
+
+        return new BufferedReader(iss);
+
+    }
+
     /**
      * Fills set by dictionary words
+     *
      * @param words Set for dictionary words
-     * @param scan input reader
+     * @param scan  input reader
      */
     private static void fill(Set<String> words, Scanner scan) {
 
