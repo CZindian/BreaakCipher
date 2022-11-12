@@ -1,0 +1,28 @@
+package cz.osu.smash.cipher.app.utils;
+
+public class Constants {
+
+    /**
+     * Program supported alphabet characters
+     */
+    private static final String alphabet = " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[]^_`abcdefghijklmnopqrstuvwxyz{|}~ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿĀāĂăĄąĆćĈĉĊċČčĎďĐđĒēĔĕĖėĘęĚěĜĝĞğĠġĢģĤĥĦħĨĩĪīĬĭĮįİıĲĳĴĵĶķĸĹĺĻļĽľĿŀŁłŃńŅņŇňŉŊŋŌōŎŏŐőŒœŔŕŖŗŘřŚśŜŝŞşŠšŢţŤťŦŧŨũŪūŬŭŮůŰűŲųŴŵŶŷŸŹźŻżŽž";
+    public static final int MAX_INT_CHAR_VALUE = alphabet.length();
+
+    /**
+     * @return array of defined alphabet
+     */
+    public static String[] getAlphabetLetters() {
+
+        String[] ret = new String[alphabet.length()];
+
+        for (int i = 0; i < alphabet.length(); i++) {
+            ret[i] = String.valueOf(
+                    alphabet.charAt(i)
+            );
+        }
+
+        return ret;
+
+    }
+
+}
