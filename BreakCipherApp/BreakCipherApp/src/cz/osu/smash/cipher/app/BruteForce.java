@@ -20,9 +20,10 @@ public class BruteForce {
 
     /**
      * Main brute force method – manager.
+     *
      * @param consoleInput encrypted message
      * @throws UnsupportedAlphabetCharacterException is thrown when consoleInput contains letter,
-     * which is not defined in alphabet
+     *                                               which is not defined in alphabet
      */
     public static void run(String consoleInput) throws UnsupportedAlphabetCharacterException {
 
@@ -42,9 +43,10 @@ public class BruteForce {
 
     /**
      * Searches all combinations of possible key from alphabet.
+     *
      * @param consoleInput encrypted message
      * @throws UnsupportedAlphabetCharacterException is thrown when consoleInput contains letter,
-     * which is not defined in alphabet
+     *                                               which is not defined in alphabet
      */
     private static void searchAllCombinations(String consoleInput)
             throws UnsupportedAlphabetCharacterException {
@@ -79,8 +81,9 @@ public class BruteForce {
     /**
      * Appends valid key and decrypted message.
      * Decrypted message is valid against dictionary.
-     * @param sb StringBuilder of all key : sentence combinations
-     * @param key possible valid key for encryption
+     *
+     * @param sb       StringBuilder of all key : sentence combinations
+     * @param key      possible valid key for encryption
      * @param sentence valid sentence
      */
     private static void appendTo(StringBuilder sb, String key, String sentence) {

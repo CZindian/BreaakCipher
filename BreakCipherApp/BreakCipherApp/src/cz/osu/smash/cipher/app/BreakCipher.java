@@ -21,6 +21,11 @@ public class BreakCipher {
         System.out.println(ANSI_GREEN + "Vítejte!" + ANSI_RESET);
         System.out.println(ANSI_GREEN + "Tento program vám pomůže zjistit šifrovací klíče pro šifru typu 'autoklíč'." + ANSI_RESET);
         System.out.println(ANSI_GREEN + "Vložte zašifrovanou zprávu:" + ANSI_RESET);
+        manageProgram();
+
+    }
+
+    private static void manageProgram() {
 
         listenConsoleInput();
         bruteForceCall();
@@ -35,14 +40,24 @@ public class BreakCipher {
 
         try {
             BruteForce.run(consoleInput);
-            System.out.println(
-                    ANSI_YELLOW + "Klíče, které mohly být zvoleny pro danou šifru:\n" +
-                            BruteForce.getPossibleCombinations() + ANSI_RESET
-            );
+            printResult();
         } catch (UnsupportedAlphabetCharacterException e) {
             System.out.println(ANSI_RED + e.getMessage() + ANSI_RESET);
             System.out.println(ANSI_GREEN + "Vložte zašifrovanou zprávu z abecedy:" + ANSI_RESET);
             bruteForceCall();
+        }
+
+    }
+
+    private static void printResult() {
+
+        if (BruteForce.getPossibleCombinations().length() == 0) {
+            System.out.println(ANSI_RED + "Nebyla nalezena žádná smysluplná kombinace." + ANSI_RESET);
+        } else {
+            System.out.println(
+                    ANSI_YELLOW + "Klíče, které mohly být zvoleny pro danou šifru:\n" +
+                            BruteForce.getPossibleCombinations() + ANSI_RESET
+            );
         }
 
     }
@@ -71,10 +86,12 @@ public class BreakCipher {
                 new Scanner(System.in)
         );
 
-        if (consoleInput.equals("a"))
+        if (consoleInput.equals("a")) {
             System.exit(1);
-        else
-            listenConsoleInput();
+        } else {
+            System.out.println(ANSI_GREEN + "Vložte zašifrovanou zprávu:" + ANSI_RESET);
+            manageProgram();
+        }
 
     }
 
