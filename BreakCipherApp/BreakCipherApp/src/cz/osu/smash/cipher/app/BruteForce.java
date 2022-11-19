@@ -95,7 +95,7 @@ public class BruteForce {
 
     private static boolean isValid(String sentence) {
 
-        sentence = sentence.replace(".", " ");
+        sentence = sentence.replace(".", " ").replace(",", " ");
         String lowerCaseSentence = sentence.toLowerCase();
         String[] words = lowerCaseSentence.split(" ");
 
